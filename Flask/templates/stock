@@ -1,0 +1,92 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Jan 10 21:00:21 2019
+
+@author: riceowl1
+"""
+
+
+
+# Dependencies
+import requests
+import json
+import time
+import pandas as pd
+import numpy as np
+from pprint import pprint
+import os
+#from config import api_key
+import csv
+import os
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+#from alpha_vantage.timeseries import TimeSeries
+from pandas.io.json import json_normalize
+
+# URL for GET requests to retrieve vehicle data
+url = "https://api.iextrading.com/1.0/stock/aapl/chart/1Y"
+#Dons test to see if github works
+url = "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=.inx&apikey="
+api = "4OGUVLMXW3CE1NXR"
+# ts = TimeSeries(key=api, output_format='pandas')
+#print(url+api)
+
+# Pretty print JSON for all launchpads
+response = requests.get(url+api).json()
+#print(json.dumps(response, indent=4, sort_keys=True))
+#pprint(response)
+# data, meta_data = ts.get_monthly(symbol= ".inix")
+# pprint(data.head(2))
+
+alpha_df = response["Monthly Time Series"]
+#alpha_df
+
+alpha_df2= pd.DataFrame.from_dict(alpha_df, orient = 'index')
+
+# alpha_df2.rename_axis('Date')
+alpha_df3 = alpha_df2.reset_index()
+alpha_df4=alpha_df3.rename(columns= {"index":"Date","1. open":"Open","4. close": "Close","5. volume": "Volume"})
+alpha_v= alpha_df4.drop(columns=["2. high","3. low"])
+alpha_v[["Open", "Close"]] = alpha_v[["Open", "Close"]].astype(float)
+#alpha_v.head(10)
+
+# new data frame with split value columns 
+market_data2 = alpha_v["Date"].str.split("-", n = 1, expand = True) 
+  
+# making seperate first name column from new data frame 
+alpha_v["Year"] = market_data2[0] 
+  
+# making seperate last name column from new data frame 
+alpha_v["stuff"] = market_data2[1] 
+
+#market["Day"] = market_data[2]
+  
+# Dropping old Name columns 
+#market.drop(columns =["Date"], inplace = True) 
+
+# new data frame with split value columns 
+market_data2 = alpha_v["stuff"].str.split("-", n = 1, expand = True) 
+
+# making seperate first name column from new data frame 
+alpha_v["Month"] = market_data2[0] 
+  
+# making seperate last name column from new data frame 
+alpha_v["Day"] = market_data2[1] 
+# market2.drop(columns =["High"], inplace = True) 
+# market.drop(columns =["Low"], inplace = True) 
+# # market.drop(columns =["Open"], inplace = True) 
+# market.drop(columns =["Close"], inplace = True) 
+# market2.rename(columns={'Adj Close':'Close'}, inplace=True)
+
+# Dropping old Name columns 
+alpha_v.drop(columns =["stuff"], inplace = True) 
+# df display 
+#alpha_v.head(10)
+
+alpha_v2 = alpha_v
+alpha_v3 = alpha_v
+
+#initalize market types
+high_profit_market_av = alpha_v
+low_profit_market_av = alpha_v
