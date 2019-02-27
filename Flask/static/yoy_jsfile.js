@@ -30,5 +30,5 @@ d3.json("/yoy_route", function(data){
   };
 
   // Plot the chart to a div tag with id "plot"
-  Plotly.newPlot("yoy_graph", plot_data, layout);
+  Plotly.newPlot("plot", plot_data, layout);
 })

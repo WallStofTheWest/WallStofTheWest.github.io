@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="static/styles/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript" src="http://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+    <script type="text/javascript" src="http://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.theme.fusion.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/flatly/bootstrap.min.css" rel="stylesheet" integrity="sha384-T5jhQKMh96HMkXwqVMSjF3CmLcL1nT9//tCqu9By5XSdj7CwR0r+F3LTzUdfkkQf" crossorigin="anonymous">
     </head>
     
     <body>
@@ -28,25 +31,162 @@
                 </nav>
             </div> 
         </header>
-            
-        <!-- <section id="newsletter">
+        <div class="container">
             <div class="container">
-                <h1>Subscribe to Our Newsletter</h1>
-                    <form>
-                        <input type="email" placeholder="Enter Email...">
-                        <button type="submit" class="button-1">Subscribe</button>
-                    </form>
-            </div> -->
-        <!-- </section> -->
-        
-        <!-- <section id="yoy_graph_main"> -->
-            <div id="yoy_graph">
-                <!-- <h1>YOY Graph</h1> -->
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="text-center">Sector Analysis</h3>
+                    <hr></hr>
+                </div>
             </div>
-        <!-- </section> -->
-        <script src="static/yoy_jsfile.js"></script>
-        <footer>Wisdom Wealth Management, Copyright &copy; 2019</footer>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="text-center">Year on Year Sector Returns</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                  <input type="button" class="btn btn-primary float-right margin-left" onclick="duration_selected(this.id)" id="20" value="20 Yr">
+                  <input type="button" class="btn btn-primary float-right margin-left" onclick="duration_selected(this.id)" id="10" value="10 Yr">
+                  <input type="button" class="btn btn-primary float-right margin-left" onclick="duration_selected(this.id)" id="5" value="5 Yr">
+                  <input type="button" class="btn btn-primary float-right margin-left" onclick="duration_selected(this.id)" id="2" value="2 Yr">
+                </div>
+                <div class="col-md-12" id="plot"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <section id="main-summary">
+                    <p> text goes here text goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext</p>
+                    </section>
+                </div>
+            </div>
+            </div>
+            
+            <div class="gap-30"></div>
+            <div class="container">
+            <div class="row">
+            <div class="col-md-12">
+                <h4 class="text-center">10 Year Sector Ranking (Excludes REA and FAANG)</h4>
+            </div>
+            <div class="row">
+                <div class="col-md-10" id="chart-container"></div>
+                <div class="col-md-2">
+                    <section id="main-summary">
+                    <p> text goes here text goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext</p>
+                    </section>
+                </div>
+            </div>
+            </div>
+            <div class="gap-10"></div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="text-center">S&#38;P 500 Sector Ranking</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10" id="chart-container2"></div>
+                <div class="col-md-2">
+                    <section id="main-summary">
+                    <p> text goes here text goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext</p>
+                    </section>
+                </div>
+            </div>
+            </div>
+            
+            <div class="gap-30"></div>
+            <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                <h4 class="text-center">Top 4 Ranked Sectors Returns</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                  <input type="button" class="btn btn-primary float-right margin-left" onclick="duration_selected_top(this.id)" id="20" value="20 Yr">
+                  <input type="button" class="btn btn-primary float-right margin-left" onclick="duration_selected_top(this.id)" id="10" value="10 Yr">
+                  <input type="button" class="btn btn-primary float-right margin-left" onclick="duration_selected_top(this.id)" id="5" value="5 Yr">
+                  <input type="button" class="btn btn-primary float-right margin-left" onclick="duration_selected_top(this.id)" id="2" value="2 Yr">
+                </div>
+                <div class="col-md-12" id="plot_top4"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <section id="main-summary">
+                    <p> text goes here text goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext</p>
+                    </section>
+                </div>
+            </div>
+            <div class="gap-10"></div>
+            <div class="row">
+                <div class="col-md-12">
+                <h4 class="text-center">Bottom 4 Ranked Sectors Returns</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                  <input type="button" class="btn btn-primary float-right margin-left" onclick="duration_selected_bot(this.id)" id="20" value="20 Yr">
+                  <input type="button" class="btn btn-primary float-right margin-left" onclick="duration_selected_bot(this.id)" id="10" value="10 Yr">
+                  <input type="button" class="btn btn-primary float-right margin-left" onclick="duration_selected_bot(this.id)" id="5" value="5 Yr">
+                  <input type="button" class="btn btn-primary float-right margin-left" onclick="duration_selected_bot(this.id)" id="4" value="2 Yr">
+                </div>
+                <div class="col-md-12" id="plot_bot4"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <section id="main-summary">
+                    <p> text goes here text goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext goes heretext</p>
+                    </section>
+            </div>
+            </div>
+            </div>
+        
+        <div class="gap-30"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                <h4 class="text-center">2018 Sector and Sub Sector Returns</h4>
+                </div>
+            </div>
+            <div class='tableauPlaceholder' id='viz1551168144287' style='position: relative'>
+            <noscript>
+                <a href='#'>
+                    <img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;20&#47;2018_sector_data&#47;Dashboard1&#47;1_rss.png' style='border: none' />
+                </a>
+            </noscript>
+            <object class='tableauViz'  style='display:none;'>
+                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> 
+                <param name='site_root' value='' />
+                <param name='name' value='2018_sector_data&#47;Dashboard1' />
+                <param name='tabs' value='no' />
+                <param name='toolbar' value='yes' />
+                <param name='static_image' value=	'https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;20&#47;2018_sector_data&#47;Dashboard1&#47;1.png' /> 
+                <param name='animate_transition' value='yes' />
+                <param name='display_static_image' value='yes' />
+                <param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' />
+                <param name='display_count' value='yes' />
+                <param name='filter' value='publish=yes' />
+            </object>
+            </div> 
+        </div>
+    </div>
+      <!-- <script src="static/data.js"></script>	 -->
+      <script src="static/sector_all.js"></script>
+      <script src="static/sector_top4.js"></script>
+      <script src="static/sector_bot4.js"></script>
+      <script src="static/heat_map_2.js"></script>
+      <script src="static/heat_map.js"></script>
+      <script type='text/javascript'>                    
+        var divElement = document.getElementById('viz1551168144287');var vizElement = divElement.getElementsByTagName('object')[0];
+        vizElement.style.width='1000px';vizElement.style.height='827px';var scriptElement = document.createElement('script');
+        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';vizElement.parentNode.insertBefore(scriptElement,vizElement);
+      </script>
+      </script>
 
+        <footer>Wisdom Wealth Management, Copyright &copy; 2019</footer>
     </body>
+    <!-- <script src="static/yoy_jsfile.js"></script>
+    <script src="static/plots.js"></script>
+    <script src="static/heat_map_2.js"></script>
+    <script src="static/heat_map.js"></script> -->
     
 </html>
