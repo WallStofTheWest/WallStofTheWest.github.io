@@ -1,3 +1,19 @@
+.margin-left {
+  margin-left: 5px;
+  vertical-align: baseline;
+}
+.gap-10 {
+	width:100%;
+	height:10px;
+}
+.gap-20 {
+	width:100%;
+	height:20px;
+}
+.gap-30 {
+	width:100%;
+	height:30px;
+}
 body{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
@@ -83,7 +99,7 @@ header a:hover{
 .showcase::after {
     content: '';
     min-height:700px;
-    width: auto;
+    width: 100%;
     background-image: url(showcase.png);
     background-size: cover;
     background-repeat: no-repeat;
@@ -154,7 +170,7 @@ header a:hover{
 }
 
 #boxes{
-    margin-top: 400px;
+    margin-top: 200px;
 }
 
 #boxes .box{
@@ -165,6 +181,21 @@ header a:hover{
 }
 
 #boxes .box img{
+    width: 90px;
+}
+
+#boxes2{
+    margin-top: 100px;
+}
+
+#boxes2 .box{
+    float: left;
+    text-align: center;
+    width: 30%;
+    padding: 10px;
+}
+
+#boxes2 .box img{
     width: 90px;
 }
 
@@ -198,7 +229,7 @@ h2{
   
   .col{
     float:left;
-    width:33.3%; 
+    width:33.3%;
     padding:8px;
     box-sizing:border-box;
   }
@@ -248,10 +279,6 @@ footer{
 
 @media(max-width: 768px){
     header #branding,
-    .container,
-    .content,
-    .title,
-    .text
     header nav,
     .col,
     header nav li,
@@ -267,7 +294,7 @@ footer{
     header{
         padding-bottom: 20px;
     }
-    .showcase h1{
+    #showcase h1{
         margin-top: 40px;
     }
     #newsletter button, .quote button{
@@ -279,4 +306,24 @@ footer{
         margin-bottom: 5px;
 
     }
- 
+    /* Small Screens */
+@media (max-width: 560px) {
+    .showcase::after {
+      height: 50vh;
+    }
+  
+    .content {
+      top: 5%;
+      margin-top: 5px;
+    }
+  
+    .content .logo {
+      height: 140px;
+      width: 140px;
+    }
+  
+    .content .text {
+      display: none;
+    }
+  
+}
